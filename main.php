@@ -214,14 +214,8 @@ function DisplayDocumentFrequencyWeight($stopDocs,$finalTokens,$fileDocs)
     {
         for ($index1 = 0; $index1<sizeof($stopDocs); $index1++)
         {
-            $kolom = 0;
-            foreach ($finalTokens as $item)
-            {
-                if($kolom == $index)
-                    if($tableValue[$index1][$kolom] != 0)
-                        $tableSum[$index]++;
-                $kolom++;
-            }
+            if($tableValue[$index1][$index])
+                $tableSum[$index]++;
         }
     }
 
@@ -265,14 +259,8 @@ function DisplayTFIDFWeight($stopDocs,$finalTokens,$fileDocs)
     {
         for ($index1 = 0; $index1<sizeof($stopDocs); $index1++)
         {
-            $kolom = 0;
-            foreach ($finalTokens as $item)
-            {
-                if($kolom == $index)
-                    if($tableValue[$index1][$kolom] != 0)
-                        $tableSum[$index]++;
-                $kolom++;
-            }
+            if($tableValue[$index1][$index])
+                $tableSum[$index]++;
         }
     }
 
