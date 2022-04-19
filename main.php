@@ -139,19 +139,19 @@ function DisplayRawTermWeight($array, $uniqueArray)
     echo "<hr>";
 }
 
-function DisplayLogFrequencyWeight($stopDocs,$finalTokens)
+function DisplayLogFrequencyWeight($array, $uniqueArray)
 {
-    DisplayHeader($finalTokens);
+    DisplayHeader($uniqueArray);
     $i = 1;
-    foreach ($stopDocs as $stopDoc)
+    foreach ($array as $items)
     {
         echo "D$i \t";
-        foreach ($finalTokens as $item)
+        foreach ($uniqueArray as $value)
         {
             $counter = 0;
-            foreach ($stopDoc as $value)
+            foreach ($items as $item)
             {
-                if($item == $value)
+                if($value == $item)
                 {
                     $counter++;
                 }
@@ -175,19 +175,19 @@ function DisplayLogFrequencyWeight($stopDocs,$finalTokens)
     echo "<hr>";
 }
 
-function DisplayDocumentFrequencyWeight($stopDocs,$finalTokens,$fileDocs)
+function DisplayDocumentFrequencyWeight($array, $uniqueArray, $fileDocs)
 {
     $i = 1;
-    DisplayHeader($finalTokens);
-    foreach ($stopDocs as $stopDoc)
+    DisplayHeader($uniqueArray);
+    foreach ($array as $items)
     {
         echo "D$i \t";
-        foreach ($finalTokens as $item)
+        foreach ($uniqueArray as $value)
         {
             $counter = 0;
-            foreach ($stopDoc as $value)
+            foreach ($items as $item)
             {
-                if($item == $value)
+                if($value == $item)
                 {
                     $counter++;
                 }
@@ -210,9 +210,9 @@ function DisplayDocumentFrequencyWeight($stopDocs,$finalTokens,$fileDocs)
         echo "<br>";
     }
 
-    for ($index = 0; $index<sizeof($finalTokens); $index++)
+    for ($index = 0; $index<sizeof($uniqueArray); $index++)
     {
-        for ($index1 = 0; $index1<sizeof($stopDocs); $index1++)
+        for ($index1 = 0; $index1<sizeof($array); $index1++)
         {
             if($tableValue[$index1][$index])
                 $tableSum[$index]++;
@@ -221,7 +221,7 @@ function DisplayDocumentFrequencyWeight($stopDocs,$finalTokens,$fileDocs)
 
     $n = 0;
     echo "IDF\t";
-    foreach ($finalTokens as $item)
+    foreach ($uniqueArray as $value)
     {
         $counter = log(count($fileDocs)/$tableSum[$n],10);
         echo number_format($counter,3)."\t";
